@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.imgBox {
+  width: 500px;
+  height: 500px;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  background: #bebebe;
+}
+
+.imgBox input[type="checkbox"] {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.imgBox span {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.imgBox span.imgBg_01 {
+  left: 0;
+  background: url(./img/bluestrawberry.jpg);
+  background-size: cover;
+}
+
+.imgBox span.imgBg_01::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./img/lemon.jpg);
+  background-size: cover;
+  transform-origin: right;
+  transition: 2s;
+  backface-visibility: hidden;
+}
+
+.imgBox input[type="checkbox"]:checked~span.imgBg_01::before {
+  transform: rotateY(180deg);
+}
+
+.imgBox span.imgBg_02 {
+  right: 0;
+  background: url(./img/lemon.jpg);
+  background-size: cover;
+  background-position-x: 250px;
+}
+
+.imgBox span.imgBg_02::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./img/bluestrawberry.jpg);
+  background-size: cover;
+  background-position-x: 250px;
+  transform-origin: left;
+  transition: 2s;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.imgBox input[type="checkbox"]:checked~span.imgBg_02::before {
+  transform: rotateY(360deg);
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 24px 32px rgba(0, 0, 0, 0.4), 0 0 0 850px #a0d621;
+  transition: 1s;
+  pointer-events: none;
+}
+
+.imgBox input[type="checkbox"]:checked~.bg {
+  box-shadow: 0 24px 32px rgba(0, 0, 0, 0.4), 0 0 0 850px #260466;
+}
